@@ -1,4 +1,4 @@
-from __future__ import annotations
+from __future__ import annotations  # 型アノテーションに自己のクラスを指定するため？
 
 
 class Examinee:
@@ -15,15 +15,17 @@ class Examinee:
 N, X, Y, Z = map(int, input().split())
 A = list(map(int, input().split()))
 B = list(map(int, input().split()))
-examinees: list[Examinee] = []
-for i in range(N):
-    examinees.append(Examinee(i + 1, A[i], B[i]))
+examinees: list[Examinee] = []  # 左辺は何をしてる？
 
+for i in range(N):
+    examinees.append(Examinee(i + 1, A[i], B[i]))  # [[id: 1, math: 80, eng: 40, passed: False], ...
+print(examinees)
 math_order = sorted(
-    filter(lambda x: not x.is_passed, examinees),
-    key=lambda x: (x.math, -1 * (x.id)),
-    reverse=True,
+    filter(lambda x: not x.is_passed, examinees),  # passedがFalseである要素を抽出、x.is_passedでどうやってアクセス？
+    key=lambda x: (x.math, -1 * (x.id)),  # ソートされる前に適応される関数を指定、()ついてるのなぜ？
+    reverse=True,  # 降順でソート
 )
+
 for i in range(X):
     math_order[i].is_passed = True
 

@@ -1,4 +1,4 @@
-from __future__ import annotations  # 型アノテーションに自己のクラスを指定するため？
+from __future__ import annotations  # リストの型アノテーションつけるため
 
 
 class Examinee:
@@ -15,14 +15,16 @@ class Examinee:
 N, X, Y, Z = map(int, input().split())
 A = list(map(int, input().split()))
 B = list(map(int, input().split()))
-examinees: list[Examinee] = []  # 左辺は何をしてる？
+examinees: list[Examinee] = []  # 変数examineesにExaminee型の要素を格納したリストを指定
 
 for i in range(N):
-    examinees.append(Examinee(i + 1, A[i], B[i]))  # [[id: 1, math: 80, eng: 40, passed: False], ...
-print(examinees)
+    examinees.append(Examinee(i + 1, A[i], B[i]))  # examinees = [[id: 1, math: 80, eng: 40, passed: False], ...
+
+# 数学の点数を降順で、同点の場合id小さい順でソート
+# x=examineesの各要素.is_passedなどで値にアクセスできる 例:examinees[0].is_passed = False
 math_order = sorted(
-    filter(lambda x: not x.is_passed, examinees),  # passedがFalseである要素を抽出、x.is_passedでどうやってアクセス？
-    key=lambda x: (x.math, -1 * (x.id)),  # ソートされる前に適応される関数を指定、()ついてるのなぜ？
+    filter(lambda x: not x.is_passed, examinees),  # まだ合格してない人だけを抽出したリスト作成
+    key=lambda x: (x.math, -1 * (x.id)),  # idにマイナスつけることで番号小さい順に並ぶ
     reverse=True,  # 降順でソート
 )
 

@@ -1,9 +1,9 @@
 x, y, n = map(int, input().split())
 
-prices = []
-for i in range(n + 1):
-    for j in range(n + 1):
-        if (i * 1) + (j * 3) == n:
-            price = (x * i) + (y * j)
-            prices.append(price)
-print(min(prices))
+
+# りんご1個の値段がx円の方が安い時(x*n)円が答え
+if x <= (y / 3):
+    print(x * n)
+# y円の方が安い時 (n%3)*x + (n//3)*y
+else:
+    print((n % 3) * x + (n // 3) * y)

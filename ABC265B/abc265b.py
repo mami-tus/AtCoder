@@ -11,6 +11,7 @@ for i in range(1, n):
         if i == x:
             t = t + y - consumed_times[i - 1]
             is_bonus = True
+            break
     # ボーナス部屋でない時
     if not is_bonus:
         t = t - consumed_times[i - 1]

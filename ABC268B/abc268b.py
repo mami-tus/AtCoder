@@ -1,6 +1,6 @@
 s = input()
 t = input()
-if s == t[: len(s)]:
+if t.startswith(s):
     print("Yes")
 else:
     print("No")

@@ -6,14 +6,26 @@ class Card:
     ) -> None:
         self.first_character = first_character
         self.second_character = second_character
+        self.PLAYING_CARDS_TYPES = ["H", "D", "C", "S"]
+        self.PLAYING_CARDS_NUMS = [
+            "A",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "T",
+            "J",
+            "Q",
+            "K",
+        ]
 
-    def is_playing_cards(
-        self,
-        playing_cards_types: list[str],
-        playing_cards_nums: list[str],
-    ) -> bool:
-        if (self.first_character in playing_cards_types) and (
-            self.second_character in playing_cards_nums
+    def is_playing_cards(self) -> bool:
+        if (self.first_character in self.PLAYING_CARDS_TYPES) and (
+            self.second_character in self.PLAYING_CARDS_NUMS
         ):
             return True
         else:
@@ -22,14 +34,13 @@ class Card:
 
 n = int(input())
 cards = [input() for _ in range(n)]
-playing_cards_types = ["H", "D", "C", "S"]
-playing_cards_nums = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "T", "J", "Q", "K"]
+
 if len(set(cards)) != len(cards):
     print("No")
     exit()
 for c in cards:
     card = Card(c[0], c[1])
-    if not card.is_playing_cards(playing_cards_types, playing_cards_nums):
+    if not card.is_playing_cards():
         print("No")
         exit()
 print("Yes")

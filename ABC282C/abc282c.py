@@ -1,17 +1,21 @@
 n = int(input())
 s_list = input()
 
-count = 0
-comma_index = []
-for i, s in enumerate(s_list):
-    if not s.isalpha() and s != ",":
-        # "の時
-        count += 1
-    if count % 2 == 0:
-        # 括られてない時
-        if s == ",":
-            comma_index.append(i)
-s_list = list(s_list)
-for j in comma_index:
-    s_list[j : j + 1] = "."
-print("".join(s_list))
+x = ""
+is_between = False
+for i in range(n):
+    if s_list[i].isalpha():
+        x += s_list[i]
+    if is_between:
+        if s_list[i] == ",":
+            x += ","
+        if s_list[i] == '"':
+            x += '"'
+            is_between = False
+    else:
+        if s_list[i] == ",":
+            x += "."
+        if s_list[i] == '"':
+            x += '"'
+            is_between = True
+print(x)

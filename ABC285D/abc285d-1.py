@@ -11,7 +11,7 @@ class Service:
         while len(self.current_usernames) != 0:
             for i in range(len(self.current_usernames)):
                 current, new = self.usernames[i]
-                if new in self.current_usernames and new not in self.new_usernames:
+                if new in self.current_usernames or new in self.new_usernames:
                     continue
                 else:
                     self.current_usernames.remove(current)

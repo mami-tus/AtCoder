@@ -11,7 +11,6 @@ class Service:
         while len(self.current_usernames) != 0:
             for i in range(len(self.current_usernames)):
                 current, new = self.usernames[i]
-                # print(current, new, self.users_num, len(self.current_usernames))
                 if new in self.current_usernames and new not in self.new_usernames:
                     continue
                 else:

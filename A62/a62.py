@@ -12,16 +12,16 @@ def dfs(v: int, visited: list[bool], graph: list[int]) -> None:
 
 
 n, m = map(int, input().split())
-graph = [[] for _ in range(n + 1)]
+graph = [[] for _ in range(n)]
 for i in range(m):
     a, b = map(int, input().split())
-    graph[a].append(b)
-    graph[b].append(a)
+    graph[a - 1].append(b - 1)
+    graph[b - 1].append(a - 1)
 
-visited = [False] * (n + 1)
-dfs(v=1, visited=visited, graph=graph)
+visited = [False] * n
+dfs(v=0, visited=visited, graph=graph)
 
-for v in range(1, n + 1):
+for v in range(n):
     if not visited[v]:
         print("The graph is not connected.")
         exit()

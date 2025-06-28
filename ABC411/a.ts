@@ -1,4 +1,5 @@
-// index.ts
+// https://atcoder.jp/contests/abc411/tasks/abc411_a
+
 import { readFileSync } from 'fs';
 
 const input: string[] = readFileSync('/dev/stdin', 'utf8').split('\n');

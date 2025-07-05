@@ -3,10 +3,18 @@
   "module": "index.ts",
   "type": "module",
   "private": true,
-  "devDependencies": {
-    "@types/bun": "latest"
+  "scripts": {
+    "lint": "biome lint --write --diagnostic-level=error",
+    "format": "biome check --write --linter-enabled=false",
+    "lint-and-format": "biome check --write --diagnostic-level=error",
+    "lint-and-format:ci": "biome ci --verbose --diagnostic-level=error",
+    "new": "acc new",
+    "test": "oj test",
+    "submit": "acc submit"
   },
-  "peerDependencies": {
-    "typescript": "^5"
+  "devDependencies": {
+    "@biomejs/biome": "^2.0.6",
+    "@types/bun": "latest",
+    "typescript": "^5.8.3"
   }
 }
